@@ -1027,6 +1027,12 @@ class MainActivity : ComponentActivity() {
                                                     contentDescription = stringResource(R.string.stats),
                                                 )
                                             }
+                                            IconButton(onClick = { navController.navigate("samples") }) {
+                                                Icon(
+                                                    painter = painterResource(R.drawable.slow_motion_video),
+                                                    contentDescription = stringResource(R.string.samples),
+                                                )
+                                            }
                                             if (listenTogetherInTopBar) {
                                                 IconButton(onClick = { navController.navigate("listen_together_from_topbar") }) {
                                                     Icon(
