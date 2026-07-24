@@ -10,13 +10,15 @@ package com.nirvana.music.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Luxury Slate/Stealth Color Palette (InnerTube design language)
-val SlateDarkBackground = Color(0xFF0C0C0E)
-val SlateDarkSurface = Color(0xFF16161A)
-val SlateDarkSurfaceVariant = Color(0xFF22222B)
-val NeonBluePrimary = Color(0xFF6BD2FF)
-val NeonPurpleSecondary = Color(0xFF8B5CF6)
-val ElectricPinkAccent = Color(0xFFFF007F)
-val SlateOnBackground = Color(0xFFECECEC)
+// Light-Blue "Hybrid" Palette (lightened InnerTube design language)
+// Slightly lifted backgrounds/surfaces + a softer, brighter light-blue accent,
+// per user request to make the InnerTube-derived theme "thoda aur light".
+val SlateDarkBackground = Color(0xFF16191F)
+val SlateDarkSurface = Color(0xFF20242C)
+val SlateDarkSurfaceVariant = Color(0xFF2B3140)
+val NeonBluePrimary = Color(0xFF9BE0FF)
+val NeonPurpleSecondary = Color(0xFFA78BFA)
+val ElectricPinkAccent = Color(0xFFFF4FA0)
+val SlateOnBackground = Color(0xFFF2F6FA)
 val SlateOnSurface = Color(0xFFFFFFFF)
-val MutedTextGray = Color(0xFF9E9E9E)
+val MutedTextGray = Color(0xFFAEB4BF)
