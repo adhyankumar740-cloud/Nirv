@@ -6,9 +6,11 @@
 package com.nirvana.music.ui.screens.library
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsetsSides
@@ -27,6 +29,8 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -47,16 +51,23 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalLocale
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import coil3.compose.AsyncImage
+import com.nirvana.music.LocalNavController
 import com.nirvana.music.LocalPlayerAwareWindowInsets
 import com.nirvana.music.LocalPlayerConnection
 import com.nirvana.music.R
@@ -105,12 +116,87 @@ import com.nirvana.music.ui.menu.PlaylistMenu
 import com.nirvana.music.ui.menu.SongMenu
 import com.nirvana.music.utils.rememberEnumPreference
 import com.nirvana.music.utils.rememberPreference
+import com.nirvana.music.viewmodels.HomeViewModel
 import com.nirvana.music.viewmodels.LibraryMixViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.text.Collator
 import java.time.LocalDateTime
 import java.util.UUID
+
+/**
+ * Innertube-style Library profile block: avatar (account image, or first-letter
+ * circle when signed out/no image) + account name on the left, a settings
+ * shortcut on the right. Shown once at the top of the default Library tab.
+ */
+@Composable
+private fun LibraryProfileHeader(
+    accountName: String,
+    accountImageUrl: String?,
+    onSettingsClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Row(
+        modifier =
+            modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 12.dp)
+                .clip(RoundedCornerShape(20.dp))
+                .background(MaterialTheme.colorScheme.surface)
+                .padding(16.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Box(
+            modifier =
+                Modifier
+                    .size(56.dp)
+                    .clip(CircleShape)
+                    .background(MaterialTheme.colorScheme.primary),
+            contentAlignment = Alignment.Center,
+        ) {
+            if (!accountImageUrl.isNullOrEmpty()) {
+                AsyncImage(
+                    model = accountImageUrl,
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize().clip(CircleShape),
+                )
+            } else {
+                Text(
+                    text = accountName.take(1).uppercase(),
+                    color = Color.Black,
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold,
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.size(16.dp))
+
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = accountName,
+                color = MaterialTheme.colorScheme.onSurface,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                maxLines = 1,
+            )
+            Text(
+                text = stringResource(R.string.filter_library),
+                color = Color.Gray,
+                fontSize = 12.sp,
+            )
+        }
+
+        IconButton(onClick = onSettingsClick) {
+            Icon(
+                painter = painterResource(R.drawable.settings),
+                contentDescription = stringResource(R.string.settings),
+                tint = MaterialTheme.colorScheme.onSurface,
+            )
+        }
+    }
+}
 
 @OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 @Composable
@@ -126,6 +212,10 @@ fun LibraryMixScreen(
     val playerConnection = LocalPlayerConnection.current ?: return
     val isPlaying by playerConnection.isEffectivelyPlaying.collectAsStateWithLifecycle()
     val mediaMetadata by playerConnection.mediaMetadata.collectAsStateWithLifecycle()
+
+    val homeViewModel: HomeViewModel = hiltViewModel()
+    val accountName by homeViewModel.accountName.collectAsStateWithLifecycle()
+    val accountImageUrl by homeViewModel.accountImageUrl.collectAsStateWithLifecycle()
 
     var viewType by rememberEnumPreference(AlbumViewTypeKey, LibraryViewType.GRID)
     val (sortType, onSortTypeChange) =
@@ -461,6 +551,17 @@ fun LibraryMixScreen(
                     contentPadding = LocalPlayerAwareWindowInsets.current.asPaddingValues(),
                 ) {
                     item(
+                        key = "profile_header",
+                        contentType = CONTENT_TYPE_HEADER,
+                    ) {
+                        LibraryProfileHeader(
+                            accountName = accountName,
+                            accountImageUrl = accountImageUrl,
+                            onSettingsClick = { navController.navigate("settings") },
+                        )
+                    }
+
+                    item(
                         key = "filter",
                         contentType = CONTENT_TYPE_HEADER,
                     ) {
@@ -788,6 +889,18 @@ fun LibraryMixScreen(
                         ),
                     contentPadding = LocalPlayerAwareWindowInsets.current.asPaddingValues(),
                 ) {
+                    item(
+                        key = "profile_header",
+                        span = { GridItemSpan(maxLineSpan) },
+                        contentType = CONTENT_TYPE_HEADER,
+                    ) {
+                        LibraryProfileHeader(
+                            accountName = accountName,
+                            accountImageUrl = accountImageUrl,
+                            onSettingsClick = { navController.navigate("settings") },
+                        )
+                    }
+
                     item(
                         key = "filter",
                         span = { GridItemSpan(maxLineSpan) },
