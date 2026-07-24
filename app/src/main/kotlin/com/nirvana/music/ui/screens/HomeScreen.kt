@@ -1173,13 +1173,31 @@ fun HomeScreen(
                 contentPadding = LocalPlayerAwareWindowInsets.current.asPaddingValues(),
             ) {
                 item {
-                    ChipsRow(
-                        chips = homePage?.chips?.map { it to it.title } ?: emptyList(),
-                        currentValue = selectedChip,
-                        onValueUpdate = {
-                            viewModel.toggleChip(it)
-                        },
-                    )
+                    // Soft light-blue hero backdrop behind the top chips row for a fresher,
+                    // more "hybrid" InnerTube-inspired look on the Home screen.
+                    Box(
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .background(
+                                    brush =
+                                        Brush.verticalGradient(
+                                            colors =
+                                                listOf(
+                                                    MaterialTheme.colorScheme.primary.copy(alpha = 0.16f),
+                                                    Color.Transparent,
+                                                ),
+                                        ),
+                                ),
+                    ) {
+                        ChipsRow(
+                            chips = homePage?.chips?.map { it to it.title } ?: emptyList(),
+                            currentValue = selectedChip,
+                            onValueUpdate = {
+                                viewModel.toggleChip(it)
+                            },
+                        )
+                    }
                 }
 
                 if (isLoading && homePage?.chips.isNullOrEmpty()) {
