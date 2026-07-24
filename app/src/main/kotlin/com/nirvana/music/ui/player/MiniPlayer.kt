@@ -769,7 +769,6 @@ private fun LegacyMiniPlayer(
                 .then(if (isTabletLandscape) Modifier.width(500.dp) else Modifier.fillMaxWidth())
                 .height(MiniPlayerHeight)
                 .windowInsetsPadding(WindowInsets.systemBars.only(WindowInsetsSides.Horizontal))
-                .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
                 .background(
                     if (pureBlack && isSystemInDarkTheme()) {
                         Color.Black
@@ -859,7 +858,7 @@ private fun LegacyMiniPlayer(
                 Modifier
                     .fillMaxSize()
                     .offset { IntOffset(offsetXAnimatable.value.roundToInt(), 0) }
-                    .padding(end = 12.dp),
+                    .padding(start = 4.dp, end = 16.dp),
         ) {
             Box(Modifier.weight(1f)) {
                 mediaMetadata?.let {
