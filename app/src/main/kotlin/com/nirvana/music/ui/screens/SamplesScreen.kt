@@ -29,12 +29,6 @@ import androidx.compose.foundation.pager.VerticalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.FavoriteBorder
-import androidx.compose.material.icons.filled.MusicNote
-import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -56,6 +50,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -70,6 +65,7 @@ import androidx.media3.ui.AspectRatioFrameLayout
 import androidx.media3.ui.PlayerView
 import com.nirvana.music.LocalNavController
 import com.nirvana.music.LocalPlayerConnection
+import com.nirvana.music.R
 import com.nirvana.music.models.toMediaMetadata
 import com.nirvana.music.playback.queues.YouTubeQueue
 import com.nirvana.music.samples.SampleTrack
@@ -161,7 +157,7 @@ fun SamplesScreen(
                     .background(Color.Black.copy(alpha = 0.4f)),
         ) {
             Icon(
-                imageVector = Icons.Default.ArrowBack,
+                painter = painterResource(R.drawable.arrow_back),
                 contentDescription = "Back",
                 tint = Color.White,
             )
@@ -321,7 +317,7 @@ fun SampleFeedCard(
                         contentAlignment = Alignment.Center,
                     ) {
                         Icon(
-                            imageVector = Icons.Default.PlayArrow,
+                            painter = painterResource(R.drawable.play),
                             contentDescription = "Play video preview",
                             tint = MaterialTheme.colorScheme.primary,
                             modifier = Modifier.size(36.dp),
@@ -342,7 +338,7 @@ fun SampleFeedCard(
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(
-                    imageVector = Icons.Default.MusicNote,
+                    painter = painterResource(R.drawable.music_note),
                     contentDescription = "Music sign",
                     tint = MaterialTheme.colorScheme.primary,
                     modifier = Modifier.size(20.dp),
@@ -429,7 +425,7 @@ fun SampleFeedCard(
                         CircularProgressIndicator(modifier = Modifier.size(16.dp), color = Color.Black, strokeWidth = 2.dp)
                     } else {
                         Icon(
-                            imageVector = Icons.Default.PlayArrow,
+                            painter = painterResource(R.drawable.play),
                             contentDescription = "Play full song",
                             modifier = Modifier.size(16.dp),
                         )
@@ -453,7 +449,7 @@ fun SampleFeedCard(
                             .background(Color.Black.copy(alpha = 0.6f)),
                 ) {
                     Icon(
-                        imageVector = if (track.isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                        painter = painterResource(if (track.isFavorite) R.drawable.favorite else R.drawable.favorite_border),
                         contentDescription = "Sample Favorite",
                         tint = if (track.isFavorite) MaterialTheme.colorScheme.tertiary else Color.White,
                         modifier = Modifier.size(24.dp),
