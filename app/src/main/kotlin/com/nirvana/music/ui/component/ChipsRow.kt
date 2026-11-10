@@ -87,10 +87,10 @@ fun <E> ChipsRow(
                     containerColor = containerColor,
                     labelColor = MaterialTheme.colorScheme.onSurface,
                     selectedContainerColor = MaterialTheme.colorScheme.primary,
-                    selectedLabelColor = Color.Black,
+                    selectedLabelColor = MaterialTheme.colorScheme.onPrimary,
                 ),
                 onClick = { onValueUpdate(value) },
-                shape = RoundedCornerShape(20.dp),
+                shape = RoundedCornerShape(50),
                 border = if (isSelected) null else GlassBorder
             )
 
