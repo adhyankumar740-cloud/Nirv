@@ -27,15 +27,31 @@ import com.materialkolor.score.Score
 val DefaultThemeColor = NeonBluePrimary
 
 // Static InnerTube-styled scheme, used whenever the user hasn't picked a custom seed color.
+// "Glass & Blur" scheme: frosted slate layers, aqua accent, peach highlight.
 private val InnerTubeStyledColorScheme = darkColorScheme(
     primary = NeonBluePrimary,
+    onPrimary = OnAccentDark,
+    primaryContainer = NeonBluePrimary.copy(alpha = 0.22f),
+    onPrimaryContainer = NeonBluePrimary,
     secondary = NeonPurpleSecondary,
+    onSecondary = OnAccentDark,
+    secondaryContainer = GlassContainerHighest,
+    onSecondaryContainer = SlateOnSurface,
     tertiary = ElectricPinkAccent,
+    onTertiary = OnAccentDark,
     background = SlateDarkBackground,
     surface = SlateDarkSurface,
     surfaceVariant = SlateDarkSurfaceVariant,
+    surfaceContainerLowest = GlassContainerLowest,
+    surfaceContainerLow = GlassContainerLow,
+    surfaceContainer = GlassContainer,
+    surfaceContainerHigh = GlassContainerHigh,
+    surfaceContainerHighest = GlassContainerHighest,
     onBackground = SlateOnBackground,
     onSurface = SlateOnSurface,
+    onSurfaceVariant = MutedTextGray,
+    outline = GlassOutline,
+    outlineVariant = GlassOutlineVariant,
 )
 
 @Composable
@@ -75,7 +91,8 @@ fun NirvanaTheme(
     // Use standard MaterialTheme instead of MaterialExpressiveTheme
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = AppTypography, // Use the defined AppTypography
+        typography = AppTypography, // Sora + Manrope (Glass & Blur)
+        shapes = AppShapes, // soft rounded corners
         content = content
     )
 }
