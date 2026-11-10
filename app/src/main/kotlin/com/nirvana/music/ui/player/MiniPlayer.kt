@@ -465,48 +465,37 @@ private fun NewMiniPlayer(
                         tint = primaryColor,
                         modifier = Modifier.size(20.dp),
                     )
-                    Spacer(modifier = Modifier.width(12.dp))
+                    Spacer(modifier = Modifier.width(8.dp))
                 }
 
-// Subscribe button - isolated composable
-                mediaMetadata?.artists?.firstOrNull()?.id?.let { artistId ->
-                    SubscribeButton(
-                        artistId = artistId,
-                        metadata = mediaMetadata!!,
-                        primaryColor = primaryColor,
+                // Favorite button - isolated composable
+                mediaMetadata?.let {
+                    FavoriteButton(
+                        songId = it.id,
+                        errorColor = errorColor,
                         outlineColor = outlineColor,
                         onSurfaceColor = onSurfaceColor,
                     )
                 }
 
-                Spacer(modifier = Modifier.width(8.dp))
+                Spacer(modifier = Modifier.width(6.dp))
 
-// Add to playlist button - isolated composable
-                mediaMetadata?.let { metadata ->
-                    AddToPlaylistButton(
-                        onClick = {
-                            menuState.show {
-                                AddToPlaylistDialog(
-                                    isVisible = true,
-                                    onGetSong = { listOf(metadata.id) },
-                                    onDismiss = menuState::dismiss,
-                                )
-                            }
-                        },
-                        outlineColor = outlineColor,
-                        onSurfaceColor = onSurfaceColor,
+                // Skip Next button
+                IconButton(
+                    onClick = {
+                        if (canSkipNext && !isListenTogetherGuest) {
+                            playerConnection.player.seekToNext()
+                        }
+                    },
+                    enabled = canSkipNext && !isListenTogetherGuest,
+                    modifier = Modifier.size(36.dp),
+                ) {
+                    Icon(
+                        painter = painterResource(R.drawable.skip_next),
+                        contentDescription = stringResource(R.string.skip_next),
+                        tint = if (canSkipNext && !isListenTogetherGuest) onSurfaceColor else onSurfaceColor.copy(alpha = 0.38f),
+                        modifier = Modifier.size(22.dp),
                     )
-                }
-
-                Spacer(modifier = Modifier.width(8.dp))
-
-// Favorite button - isolated composable
-                mediaMetadata?.let { FavoriteButton(
-                    songId = it.id,
-                    errorColor = errorColor,
-                    outlineColor = outlineColor,
-                    onSurfaceColor = onSurfaceColor,
-                )
                 }
             }
         }
