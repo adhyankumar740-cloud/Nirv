@@ -5,6 +5,8 @@
 
 package com.nirvana.music.ui.screens.settings
 
+import com.nirvana.music.ui.component.glassSheetColor
+import com.nirvana.music.ui.component.glassTopAppBarColors
 import android.content.Intent
 import android.os.Build
 import android.provider.Settings
@@ -183,6 +185,7 @@ fun ContentSettings(
         var authEnabled by rememberSaveable { mutableStateOf(proxyUsername.isNotBlank() || proxyPassword.isNotBlank()) }
 
         AlertDialog(
+        containerColor = glassSheetColor(),
             onDismissRequest = { showProxyConfigurationDialog = false },
             title = {
                 Text(stringResource(R.string.config_proxy))
@@ -359,6 +362,7 @@ fun ContentSettings(
 
     if (showProviderSelectionDialog) {
         AlertDialog(
+        containerColor = glassSheetColor(),
             onDismissRequest = { showProviderSelectionDialog = false },
             title = { Text(stringResource(R.string.lyrics_provider_selection)) },
             text = {
@@ -563,6 +567,7 @@ fun ContentSettings(
         var tempLength by rememberSaveable { mutableFloatStateOf(lengthTop.toFloat()) }
 
         AlertDialog(
+        containerColor = glassSheetColor(),
             onDismissRequest = { showTopLengthDialog = false },
             title = { Text(stringResource(R.string.top_length)) },
             text = {
@@ -629,6 +634,7 @@ fun ContentSettings(
         }
 
         AlertDialog(
+        containerColor = glassSheetColor(),
             onDismissRequest = { showProviderPriorityDialog = false },
             title = { Text(stringResource(R.string.lyrics_provider_priority)) },
             text = {
@@ -1025,6 +1031,7 @@ fun ContentSettings(
     }
 
     TopAppBar(
+        colors = glassTopAppBarColors(),
         title = { Text(stringResource(R.string.content)) },
         navigationIcon = {
             IconButton(
