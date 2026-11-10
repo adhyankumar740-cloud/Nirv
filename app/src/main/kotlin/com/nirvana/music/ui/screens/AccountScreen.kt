@@ -5,6 +5,7 @@
 
 package com.nirvana.music.ui.screens
 
+import com.nirvana.music.ui.component.glassTopAppBarColors
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -319,6 +320,7 @@ fun AccountScreen(
     }
 
     TopAppBar(
+        colors = glassTopAppBarColors(),
         title = { Text(stringResource(R.string.account)) },
         navigationIcon = {
             IconButton(
