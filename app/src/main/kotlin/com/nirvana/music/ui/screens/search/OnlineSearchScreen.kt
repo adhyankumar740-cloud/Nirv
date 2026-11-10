@@ -129,7 +129,7 @@ fun OnlineSearchScreen(
         modifier =
             Modifier
                 .fillMaxSize()
-                .background(if (pureBlack) Color.Black else MaterialTheme.colorScheme.background),
+                .background(if (pureBlack) Color.Black else androidx.compose.ui.graphics.Color.Transparent),
     ) {
         // Show parsed URL item at the top if present
         if (viewState.isUrlQuery && viewState.parsedUrlItem != null) {
