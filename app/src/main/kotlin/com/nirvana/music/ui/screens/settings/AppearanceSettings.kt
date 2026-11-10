@@ -5,6 +5,7 @@
 
 package com.nirvana.music.ui.screens.settings
 
+import com.nirvana.music.ui.component.glassTopAppBarColors
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -1893,6 +1894,7 @@ fun AppearanceSettings(
     }
 
     TopAppBar(
+        colors = glassTopAppBarColors(),
         title = { Text(stringResource(R.string.appearance)) },
         navigationIcon = {
             IconButton(
