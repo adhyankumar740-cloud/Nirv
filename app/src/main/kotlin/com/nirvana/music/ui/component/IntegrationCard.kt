@@ -76,9 +76,8 @@ fun IntegrationCard(
                         .fillMaxWidth()
                         .animateContentSize(),
                     shape = shape,
-                    colors = CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f)
-                    ),
+                    colors = glassCardColors(),
+        border = GlassBorder,
                     elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
                 ) {
                     IntegrationCardItemRow(item = item)
