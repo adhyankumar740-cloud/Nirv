@@ -662,30 +662,44 @@ private fun HomeGreetingHeader(
         Column {
             Text(
                 text = stringResource(currentGreetingRes()),
-                color = Color.Gray,
-                fontSize = 14.sp,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                style = MaterialTheme.typography.labelMedium,
+                letterSpacing = 1.sp,
             )
-            Text(
-                text = accountName,
-                color = Color.White,
-                fontSize = 22.sp,
-                fontWeight = androidx.compose.ui.text.font.FontWeight.Bold,
-                maxLines = 1,
-                overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis,
-            )
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(6.dp),
+            ) {
+                Text(
+                    text = if (accountName.isNotBlank()) accountName else stringResource(R.string.home),
+                    color = MaterialTheme.colorScheme.onBackground,
+                    style = MaterialTheme.typography.headlineMedium,
+                    fontWeight = androidx.compose.ui.text.font.FontWeight.ExtraBold,
+                    maxLines = 1,
+                    overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis,
+                )
+                Box(
+                    modifier = Modifier
+                        .size(8.dp)
+                        .clip(CircleShape)
+                        .background(MaterialTheme.colorScheme.primary)
+                )
+            }
         }
 
         IconButton(
             onClick = onSearchClick,
             modifier =
                 Modifier
-                    .clip(RoundedCornerShape(14.dp))
-                    .background(MaterialTheme.colorScheme.surface),
+                    .size(44.dp)
+                    .clip(CircleShape)
+                    .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.6f)),
         ) {
             Icon(
                 painter = painterResource(R.drawable.search),
                 contentDescription = stringResource(R.string.search),
                 tint = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.size(22.dp),
             )
         }
     }
