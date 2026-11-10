@@ -5,6 +5,8 @@
 
 package com.nirvana.music.ui.screens.settings
 
+import com.nirvana.music.ui.component.GlassBorder
+import com.nirvana.music.ui.component.glassCardColors
 import androidx.compose.animation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -179,9 +181,8 @@ fun ReleaseItem(release: ReleaseInfo) {
 
         Card(
             modifier = Modifier.fillMaxWidth(),
-            colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.surfaceContainer
-            ),
+            colors = glassCardColors(),
+        border = GlassBorder,
             shape = RoundedCornerShape(16.dp)
         ) {
             Column(modifier = Modifier.padding(16.dp)) {
