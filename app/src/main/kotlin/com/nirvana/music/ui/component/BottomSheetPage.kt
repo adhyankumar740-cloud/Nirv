@@ -56,7 +56,7 @@ class BottomSheetPageState(
 fun BottomSheetPage(
     modifier: Modifier = Modifier,
     state: BottomSheetPageState,
-    background: Color = MaterialTheme.colorScheme.surfaceColorAtElevation(NavigationBarDefaults.Elevation),
+    background: Color = glassSheetColor(),
 ) {
     val focusManager = LocalFocusManager.current
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = false)
