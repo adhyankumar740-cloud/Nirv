@@ -5,6 +5,7 @@
 
 package com.nirvana.music.ui.screens
 
+import com.nirvana.music.ui.component.glassTopAppBarColors
 import android.annotation.SuppressLint
 import android.webkit.CookieManager
 import android.webkit.JavascriptInterface
@@ -192,6 +193,7 @@ fun LoginScreen(navController: NavController) {
     )
 
     TopAppBar(
+        colors = glassTopAppBarColors(),
         title = { Text(stringResource(R.string.login)) },
         navigationIcon = {
             IconButton(
