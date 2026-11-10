@@ -589,9 +589,9 @@
 
     <!-- Decryption Library Settings -->
 
-    <!-- Listen Together -->
-    <string name="together">Together</string>
-    <string name="listen_together">Listen Together</string>
+    <!-- Jam (formerly Listen Together) -->
+    <string name="together">Jam</string>
+    <string name="listen_together">Jam</string>
     <string name="listen_together_server_url">Server URL</string>
     <string name="listen_together_choose_server">Choose server</string>
     <string name="listen_together_custom_server">Custom server</string>
@@ -602,12 +602,12 @@
     <string name="listen_together_disconnected">Disconnected</string>
     <string name="listen_together_connecting">Connecting…</string>
     <string name="listen_together_error">Connection error</string>
-    <string name="listen_together_create_room">Create room</string>
-    <string name="listen_together_create_room_desc">Create a room and share the code with your friends</string>
-    <string name="listen_together_join_room">Join room</string>
-    <string name="listen_together_room_code">Room code</string>
-    <string name="listen_together_you_are_host">You are the host</string>
-    <string name="listen_together_you_are_guest">You are a guest</string>
+    <string name="listen_together_create_room">Start a Jam</string>
+    <string name="listen_together_create_room_desc">Start a Jam session and share the code with your friends</string>
+    <string name="listen_together_join_room">Join Jam</string>
+    <string name="listen_together_room_code">Jam code</string>
+    <string name="listen_together_you_are_host">You are hosting the Jam</string>
+    <string name="listen_together_you_are_guest">You are jamming as guest</string>
     <string name="mute">Mute</string>
     <string name="unmute">Unmute</string>
     <string name="listen_together_join_requests">Join requests</string>
@@ -621,23 +621,23 @@
     <string name="listen_together_auto_approval_suggestions_desc">Automatically approve and queue song suggestions from guests</string>
     <string name="listen_together_sync_volume">Sync host volume</string>
     <string name="listen_together_sync_volume_desc">Guests will match the host\'s volume level</string>
-    <string name="listen_together_in_top_bar">Listen Together in top bar</string>
-    <string name="listen_together_in_top_bar_desc">Show Listen Together in the top app bar instead of the navigation bar</string>
-    <string name="listen_together_description">Listen to music with your friends in real time. Create a room to host, or join an existing room with a code</string>
-    <string name="listen_together_background_disconnect_note">NOTE: When you are connected but not in a room, Listen Together disconnects after 30 minutes in the background to save battery</string>
-    <string name="listen_together_not_configured">Listen Together is not set up. Please configure the server URL in: Listen Together &gt; Settings &gt; Server URL</string>
+    <string name="listen_together_in_top_bar">Jam in top bar</string>
+    <string name="listen_together_in_top_bar_desc">Show Jam in the top app bar instead of the navigation bar</string>
+    <string name="listen_together_description">Jam with your friends in real time. Create a room to host, or join an existing Jam with a code</string>
+    <string name="listen_together_background_disconnect_note">NOTE: When you are connected but not in a room, Jam disconnects after 30 minutes in the background to save battery</string>
+    <string name="listen_together_not_configured">Jam is not set up. Please configure the server URL in: Jam &gt; Settings &gt; Server URL</string>
     <string name="listen_together_suggestion_received">%1$s suggested %2$s</string>
     <string name="listen_together_suggestion_sent">Suggestion sent to host!</string>
-    <string name="listen_together_join_request_notification">%1$s wants to join the room</string>
-    <string name="listen_together_notification_channel_name">Listen Together</string>
-    <string name="listen_together_notification_channel_desc">Notifications for Listen Together events</string>
-    <string name="listen_together_room_created">Room created: %s</string>
-    <string name="listen_together_cannot_edit_username_in_room">The username cannot be changed while in a room</string>
+    <string name="listen_together_join_request_notification">%1$s wants to join the Jam</string>
+    <string name="listen_together_notification_channel_name">Jam</string>
+    <string name="listen_together_notification_channel_desc">Notifications for Jam events</string>
+    <string name="listen_together_room_created">Jam started: %s</string>
+    <string name="listen_together_cannot_edit_username_in_room">The username cannot be changed while in a Jam</string>
     <string name="waiting_for_approval">Waiting for host approval…</string>
-    <string name="invalid_room_code">Invalid room code</string>
+    <string name="invalid_room_code">Invalid Jam code</string>
     <string name="join_request_denied">Join request denied</string>
-    <string name="join_existing_room">Join existing room</string>
-    <string name="room_code">Room code</string>
+    <string name="join_existing_room">Join existing Jam</string>
+    <string name="room_code">Jam code</string>
     <string name="leave_room">Leave room</string>
     <string name="join_room">Join</string>
     <string name="create_room">Create</string>
