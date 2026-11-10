@@ -7,6 +7,9 @@ package com.nirvana.music.ui.component
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import com.nirvana.music.ui.theme.GlassFillStrong
+import com.nirvana.music.ui.theme.GlassOutline
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -43,7 +46,8 @@ fun NavigationTile(
             Modifier
                 .size(56.dp)
                 .clip(CircleShape)
-                .background(MaterialTheme.colorScheme.surfaceContainer)
+                .background(GlassFillStrong)
+                .border(1.dp, GlassOutline, CircleShape)
                 .clickable(onClick = onClick),
         ) {
             Icon(
