@@ -1,5 +1,8 @@
 package com.nirvana.music.ui.screens.settings.integrations
 
+import com.nirvana.music.ui.component.GlassBorder
+import com.nirvana.music.ui.component.glassCardColors
+import com.nirvana.music.ui.component.glassTopAppBarColors
 import android.app.Activity
 import android.content.Intent
 import androidx.compose.animation.AnimatedVisibility
@@ -251,10 +254,8 @@ fun DiscordSettings(
 
         AnimatedVisibility(visible = !infoDismissed) {
             Card(
-                colors =
-                    CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
-                    ),
+                colors = glassCardColors(strong = true),
+        border = GlassBorder,
                 modifier =
                     Modifier
                         .fillMaxWidth()
@@ -345,10 +346,8 @@ fun DiscordSettings(
 
         Card(
             shape = RoundedCornerShape(28.dp),
-            colors =
-                CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
-                ),
+            colors = glassCardColors(strong = true),
+        border = GlassBorder,
             modifier =
                 Modifier
                     .fillMaxWidth()
@@ -878,6 +877,7 @@ fun DiscordSettings(
     }
 
     TopAppBar(
+        colors = glassTopAppBarColors(),
         title = { Text(stringResource(R.string.discord_integration)) },
         navigationIcon = {
             IconButton(
