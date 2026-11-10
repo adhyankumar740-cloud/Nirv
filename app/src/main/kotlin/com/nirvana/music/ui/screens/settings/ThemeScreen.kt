@@ -1,5 +1,8 @@
 package com.nirvana.music.ui.screens.settings
 
+import com.nirvana.music.ui.component.GlassBorder
+import com.nirvana.music.ui.component.glassCardColors
+import com.nirvana.music.ui.component.glassTopAppBarColors
 import android.content.res.Configuration
 import android.os.Build
 import androidx.compose.animation.AnimatedVisibility
@@ -169,6 +172,7 @@ fun ThemeScreen(
     }
 
     TopAppBar(
+        colors = glassTopAppBarColors(),
         title = { Text(stringResource(R.string.theme_colors)) },
         navigationIcon = {
             IconButton(onClick = { navController.navigateUp() }) {
@@ -299,9 +303,8 @@ fun ThemeControls(
             .fillMaxWidth()
             .padding(horizontal = 16.dp),
         shape = RoundedCornerShape(24.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh
-        ),
+        colors = glassCardColors(strong = true),
+        border = GlassBorder,
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Column(
