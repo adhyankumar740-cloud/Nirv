@@ -251,7 +251,7 @@ fun HistoryScreen(
                             modifier =
                                 Modifier
                                     .fillMaxWidth()
-                                    .background(MaterialTheme.colorScheme.background),
+                                    .background(MaterialTheme.colorScheme.background.copy(alpha = 0.94f)),
                         )
                     }
 
