@@ -449,7 +449,7 @@ private fun NotConfiguredContent() {
             modifier = Modifier.padding(24.dp),
         ) {
             Icon(
-                painter = painterResource(R.drawable.group),
+                painter = painterResource(R.drawable.jam_filled),
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.size(64.dp),
@@ -489,7 +489,7 @@ private fun HeaderSection(isInRoom: Boolean = false) {
             contentAlignment = Alignment.Center,
         ) {
             Icon(
-                painter = painterResource(R.drawable.group_outlined),
+                painter = painterResource(R.drawable.jam_outlined),
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.onPrimaryContainer,
                 modifier = Modifier.size(48.dp),
@@ -1117,7 +1117,7 @@ private fun JoinCreateRoomSection(
                 placeholder = { Text(stringResource(R.string.enter_room_code)) },
                 leadingIcon = {
                     Icon(
-                        painterResource(R.drawable.group),
+                        painterResource(R.drawable.jam_outlined),
                         null,
                         tint = MaterialTheme.colorScheme.primary,
                     )
@@ -1325,7 +1325,7 @@ private fun UserActionDialog(
         onDismiss = onDismiss,
         icon = {
             Icon(
-                painter = painterResource(R.drawable.group),
+                painter = painterResource(R.drawable.jam_filled),
                 contentDescription = null,
                 modifier = Modifier.size(28.dp),
             )
