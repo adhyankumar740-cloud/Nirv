@@ -5,6 +5,7 @@
 
 package com.nirvana.music.ui.screens.settings
 
+import com.nirvana.music.ui.component.glassTopAppBarColors
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -325,6 +326,7 @@ fun AndroidAutoSettings(
     }
 
     TopAppBar(
+        colors = glassTopAppBarColors(),
         title = { Text(stringResource(R.string.android_auto)) },
         navigationIcon = {
             IconButton(
