@@ -5,6 +5,7 @@
 
 package com.nirvana.music.ui.screens.settings
 
+import com.nirvana.music.ui.component.glassTopAppBarColors
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Build
@@ -275,6 +276,7 @@ fun SettingsScreen(
     }
 
     TopAppBar(
+        colors = glassTopAppBarColors(),
         title = { Text(stringResource(R.string.settings)) },
         navigationIcon = {
             IconButton(
