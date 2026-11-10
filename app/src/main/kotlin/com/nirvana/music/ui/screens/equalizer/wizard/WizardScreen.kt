@@ -1,5 +1,7 @@
 package com.nirvana.music.ui.screens.equalizer.wizard
 
+import com.nirvana.music.ui.component.GlassBorder
+import com.nirvana.music.ui.component.glassCardColors
 import androidx.compose.animation.*
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.clickable
@@ -63,6 +65,7 @@ private fun WizardScreenContent(
     onNavigateBack: () -> Unit
 ) {
     Scaffold(
+        containerColor = androidx.compose.ui.graphics.Color.Transparent,
         topBar = {
             TopAppBar(
                 title = {
@@ -256,9 +259,8 @@ private fun ModelItem(
         modifier = Modifier
             .fillMaxWidth()
             .clickable(onClick = onClick),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceVariant
-        )
+        colors = glassCardColors(),
+        border = GlassBorder
     ) {
         Row(
             modifier = Modifier
