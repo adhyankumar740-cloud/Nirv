@@ -47,9 +47,8 @@ fun Material3MenuGroup(
                     .fillMaxWidth()
                     .animateContentSize(),
                 shape = shape,
-                colors = item.cardColors ?: CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f)
-                ),
+                colors = item.cardColors ?: glassCardColors(),
+                border = GlassBorder,
                 elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
             ) {
                 Material3MenuItemRow(item = item)
