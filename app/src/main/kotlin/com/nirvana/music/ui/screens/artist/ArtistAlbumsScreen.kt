@@ -5,6 +5,7 @@
 
 package com.nirvana.music.ui.screens.artist
 
+import com.nirvana.music.ui.component.glassTopAppBarColors
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
@@ -142,6 +143,7 @@ fun ArtistAlbumsScreen(
         }
 
         TopAppBar(
+        colors = glassTopAppBarColors(),
             title = { Text(artist?.artist?.name.orEmpty()) },
             navigationIcon = {
                 IconButton(
