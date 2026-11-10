@@ -5,6 +5,7 @@
 
 package com.nirvana.music.ui.screens.recognition
 
+import com.nirvana.music.ui.component.glassTopAppBarColors
 import android.Manifest
 import android.content.pm.PackageManager
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -199,8 +200,11 @@ fun RecognitionScreen(
     }
 
     Scaffold(
+
+        containerColor = androidx.compose.ui.graphics.Color.Transparent,
         topBar = {
             TopAppBar(
+        colors = glassTopAppBarColors(),
                 title = { Text(stringResource(R.string.recognize_music)) },
                 navigationIcon = {
                     IconButton(
