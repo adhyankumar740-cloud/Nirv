@@ -5,6 +5,8 @@
 
 package com.nirvana.music.ui.screens.settings
 
+import com.nirvana.music.ui.component.glassSheetColor
+import com.nirvana.music.ui.component.glassTopAppBarColors
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -248,6 +250,7 @@ fun StorageSettings(
     // Confirmation Dialog
     if (showCacheWarningDialog) {
         AlertDialog(
+        containerColor = glassSheetColor(),
             onDismissRequest = { showCacheWarningDialog = false },
             title = { Text(stringResource(R.string.cache_size_warning_title)) },
             text = {
@@ -476,6 +479,7 @@ fun StorageSettings(
     }
 
     TopAppBar(
+        colors = glassTopAppBarColors(),
         title = { Text(stringResource(R.string.storage)) },
         navigationIcon = {
             IconButton(
