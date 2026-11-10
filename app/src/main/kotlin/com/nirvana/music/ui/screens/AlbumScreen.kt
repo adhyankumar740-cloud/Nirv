@@ -5,6 +5,7 @@
 
 package com.nirvana.music.ui.screens
 
+import com.nirvana.music.ui.component.glassTopAppBarColors
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable
@@ -521,6 +522,7 @@ fun AlbumScreen(
     }
 
     TopAppBar(
+        colors = glassTopAppBarColors(),
         title = {
             if (inSelectMode) {
                 Text(pluralStringResource(R.plurals.n_selected, selection.size, selection.size))
