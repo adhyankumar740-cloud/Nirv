@@ -1,5 +1,7 @@
 package com.nirvana.music.ui.screens.equalizer
 
+import com.nirvana.music.ui.component.glassSheetColor
+import com.nirvana.music.ui.component.glassTopAppBarColors
 import android.annotation.SuppressLint
 import android.provider.OpenableColumns
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -135,6 +137,7 @@ fun EqScreen(
     // Error dialog
     if (showError != null) {
         AlertDialog(
+        containerColor = glassSheetColor(),
             onDismissRequest = { showError = null },
             title = {
                 Text(stringResource(R.string.import_error_title))
@@ -153,6 +156,7 @@ fun EqScreen(
     // Error dialog for apply failure
     if (state.error != null) {
         AlertDialog(
+        containerColor = glassSheetColor(),
             onDismissRequest = { viewModel.clearError() },
             title = {
                 Text(stringResource(R.string.error_title))
@@ -185,8 +189,10 @@ private fun EqScreenContent(
     onDeleteProfile: (String) -> Unit
 ) {
     Scaffold(
+        containerColor = androidx.compose.ui.graphics.Color.Transparent,
         topBar = {
             TopAppBar(
+        colors = glassTopAppBarColors(),
                 title = { Text(stringResource(R.string.equalizer_header)) },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
@@ -382,6 +388,7 @@ private fun EQProfileItem(
     // Delete confirmation dialog
     if (showDeleteDialog) {
         AlertDialog(
+        containerColor = glassSheetColor(),
             onDismissRequest = { showDeleteDialog = false },
             title = { Text(stringResource(R.string.delete_profile_desc)) },
             text = {
