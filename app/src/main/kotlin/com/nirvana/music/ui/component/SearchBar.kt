@@ -26,6 +26,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import com.nirvana.music.ui.theme.GlassFillStrong
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -79,7 +80,8 @@ fun TopSearch(
     trailingIcon: @Composable (() -> Unit)? = null,
     shape: Shape? = null,
     colors: TopAppBarColors = TopAppBarDefaults.topAppBarColors(
-        containerColor = MaterialTheme.colorScheme.surfaceContainerLow
+        containerColor = GlassFillStrong,
+        scrolledContainerColor = GlassFillStrong,
     ),
     scrollBehavior: TopAppBarScrollBehavior? = null,
     windowInsets: WindowInsets = WindowInsets.systemBars,
