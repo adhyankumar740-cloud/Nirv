@@ -152,16 +152,17 @@ fun AppNavigationBar(
     val haptics = LocalHapticFeedback.current
     val viewConfiguration = LocalViewConfiguration.current
 
-    val glassShape = RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp)
+    val glassShape = RoundedCornerShape(32.dp)
     val glassModifier = if (pureBlack) modifier else modifier
+        .padding(horizontal = 8.dp, vertical = 4.dp)
         .clip(glassShape)
         .glass(shape = glassShape, strong = true)
     val itemColors = NavigationBarItemDefaults.colors(
         selectedIconColor = MaterialTheme.colorScheme.primary,
-        selectedTextColor = MaterialTheme.colorScheme.onSurface,
-        indicatorColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.18f),
-        unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
-        unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
+        selectedTextColor = MaterialTheme.colorScheme.primary,
+        indicatorColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.20f),
+        unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f),
+        unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f),
     )
 
     NavigationBar(
