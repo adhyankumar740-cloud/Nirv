@@ -1048,7 +1048,7 @@ class MainActivity : ComponentActivity() {
                                             if (listenTogetherInTopBar) {
                                                 IconButton(onClick = { navController.navigate("listen_together_from_topbar") }) {
                                                     Icon(
-                                                        painter = painterResource(R.drawable.group_outlined),
+                                                        painter = painterResource(R.drawable.jam_outlined),
                                                         contentDescription = stringResource(R.string.together),
                                                     )
                                                 }
