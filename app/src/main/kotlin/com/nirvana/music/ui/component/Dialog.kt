@@ -79,8 +79,9 @@ fun DefaultDialog(
         Surface(
             modifier = Modifier.padding(24.dp),
             shape = AlertDialogDefaults.shape,
-            color = AlertDialogDefaults.containerColor,
-            tonalElevation = AlertDialogDefaults.TonalElevation,
+            color = glassSheetColor(),
+            tonalElevation = 0.dp,
+            border = GlassBorder,
         ) {
             Column(
                 horizontalAlignment = horizontalAlignment,
@@ -252,8 +253,9 @@ fun ListDialog(
         Surface(
             modifier = Modifier.padding(24.dp),
             shape = AlertDialogDefaults.shape,
-            color = AlertDialogDefaults.containerColor,
-            tonalElevation = AlertDialogDefaults.TonalElevation,
+            color = glassSheetColor(),
+            tonalElevation = 0.dp,
+            border = GlassBorder,
         ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
