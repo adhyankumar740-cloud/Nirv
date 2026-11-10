@@ -104,7 +104,7 @@ fun LibraryArtistsScreen(
             FilterChip(
                 label = { Text(stringResource(R.string.artists)) },
                 selected = true,
-                colors = FilterChipDefaults.filterChipColors(containerColor = MaterialTheme.colorScheme.surface),
+                colors = FilterChipDefaults.filterChipColors(containerColor = com.nirvana.music.ui.theme.GlassFill),
                 onClick = onDeselect,
                 shape = RoundedCornerShape(16.dp),
                 leadingIcon = {
