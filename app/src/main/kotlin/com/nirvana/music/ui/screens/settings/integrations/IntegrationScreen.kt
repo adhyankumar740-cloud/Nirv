@@ -5,6 +5,7 @@
 
 package com.nirvana.music.ui.screens.settings.integrations
 
+import com.nirvana.music.ui.component.glassTopAppBarColors
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.windowInsetsPadding
@@ -58,6 +59,7 @@ fun IntegrationScreen(
     }
 
     TopAppBar(
+        colors = glassTopAppBarColors(),
         title = { Text(stringResource(R.string.integrations)) },
         navigationIcon = {
             IconButton(
