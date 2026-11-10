@@ -5,6 +5,8 @@
 
 package com.nirvana.music.ui.screens
 
+import com.nirvana.music.ui.component.GlassBorder
+import com.nirvana.music.ui.component.glassCardColors
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -529,10 +531,8 @@ fun DailyDiscoverCard(
                         }
                     },
                 ),
-        colors =
-            CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.surfaceVariant,
-            ),
+        colors = glassCardColors(),
+        border = GlassBorder,
         shape = RoundedCornerShape(28.dp),
     ) {
         BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
@@ -1463,10 +1463,8 @@ fun HomeScreen(
                                     Modifier
                                         .fillMaxWidth()
                                         .padding(16.dp),
-                                colors =
-                                    CardDefaults.cardColors(
-                                        containerColor = MaterialTheme.colorScheme.surfaceVariant,
-                                    ),
+                                colors = glassCardColors(),
+        border = GlassBorder,
                             ) {
                                 Box(
                                     modifier =
