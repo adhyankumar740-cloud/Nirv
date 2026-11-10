@@ -454,10 +454,10 @@ private fun ThumbnailHeader(
                 .align(Alignment.Center)
                 .padding(horizontal = 48.dp)
         ) {
-            // Listen Together indicator
+            // Jam session indicator
             if (listenTogetherRoleState?.value != RoomRole.NONE) {
                 Text(
-                    text = if (listenTogetherRoleState?.value == RoomRole.HOST) "Hosting Listen Together" else "Listening Together",
+                    text = if (listenTogetherRoleState?.value == RoomRole.HOST) "Hosting Jam" else "Jamming Together",
                     style = MaterialTheme.typography.titleMedium,
                     color = textColor
                 )
