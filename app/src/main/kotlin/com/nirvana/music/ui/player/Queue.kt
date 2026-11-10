@@ -279,28 +279,15 @@ fun Queue(
                             ),
                 ) {
                     val buttonSize = 42.dp
-                    val iconSize = 24.dp
-                    val queueShape =
-                        RoundedCornerShape(
-                            topStart = 50.dp,
-                            bottomStart = 50.dp,
-                            topEnd = 3.dp,
-                            bottomEnd = 3.dp,
-                        )
-                    val middleShape = RoundedCornerShape(3.dp)
-                    val repeatShape =
-                        RoundedCornerShape(
-                            topStart = 3.dp,
-                            bottomStart = 3.dp,
-                            topEnd = 50.dp,
-                            bottomEnd = 50.dp,
-                        )
+                    val iconSize = 22.dp
+                    val pillShape = CircleShape
 
+                    // 1. Lyrics Toggle
                     PlayerQueueButton(
-                        icon = R.drawable.queue_music,
-                        onClick = { state.expandSoft() },
-                        isActive = false,
-                        shape = queueShape,
+                        icon = R.drawable.lyrics,
+                        onClick = { onToggleLyrics() },
+                        isActive = showInlineLyrics,
+                        shape = pillShape,
                         modifier = Modifier.size(buttonSize),
                         textButtonColor = textButtonColor,
                         iconButtonColor = iconButtonColor,
@@ -309,6 +296,29 @@ fun Queue(
                         playerBackground = playerBackground,
                     )
 
+                    Spacer(modifier = Modifier.width(8.dp))
+
+                    // 2. Jam (Listen Together) Shortcut
+                    val isJamActive = listenTogetherManager?.isInRoom == true
+                    PlayerQueueButton(
+                        icon = if (isJamActive) R.drawable.jam_filled else R.drawable.jam_outlined,
+                        onClick = {
+                            navController.navigate("listen_together")
+                            playerBottomSheetState.collapseSoft()
+                        },
+                        isActive = isJamActive,
+                        shape = pillShape,
+                        modifier = Modifier.size(buttonSize),
+                        textButtonColor = textButtonColor,
+                        iconButtonColor = iconButtonColor,
+                        iconSize = iconSize,
+                        textBackgroundColor = TextBackgroundColor,
+                        playerBackground = playerBackground,
+                    )
+
+                    Spacer(modifier = Modifier.width(8.dp))
+
+                    // 3. Sleep Timer
                     PlayerQueueButton(
                         icon = R.drawable.bedtime,
                         onClick = {
@@ -320,7 +330,7 @@ fun Queue(
                         },
                         isActive = sleepTimerEnabled,
                         enabled = !isListenTogetherGuest,
-                        shape = middleShape,
+                        shape = pillShape,
                         modifier = Modifier.size(buttonSize),
                         textButtonColor = textButtonColor,
                         iconButtonColor = iconButtonColor,
@@ -330,49 +340,14 @@ fun Queue(
                         playerBackground = playerBackground,
                     )
 
-                    val shuffleModeEnabled by playerConnection.shuffleModeEnabled.collectAsStateWithLifecycle()
-                    PlayerQueueButton(
-                        icon = R.drawable.shuffle,
-                        onClick = {
-                            playerConnection.player.shuffleModeEnabled = !shuffleModeEnabled
-                        },
-                        isActive = shuffleModeEnabled,
-                        enabled = !isListenTogetherGuest,
-                        shape = middleShape,
-                        modifier = Modifier.size(buttonSize),
-                        textButtonColor = textButtonColor,
-                        iconButtonColor = iconButtonColor,
-                        iconSize = iconSize,
-                        textBackgroundColor = TextBackgroundColor,
-                        playerBackground = playerBackground,
-                    )
+                    Spacer(modifier = Modifier.width(8.dp))
 
+                    // 4. Queue Expand
                     PlayerQueueButton(
-                        icon = R.drawable.lyrics,
-                        onClick = { onToggleLyrics() },
-                        isActive = showInlineLyrics,
-                        shape = middleShape,
-                        modifier = Modifier.size(buttonSize),
-                        textButtonColor = textButtonColor,
-                        iconButtonColor = iconButtonColor,
-                        iconSize = iconSize,
-                        textBackgroundColor = TextBackgroundColor,
-                        playerBackground = playerBackground,
-                    )
-
-                    PlayerQueueButton(
-                        icon =
-                            when (repeatMode) {
-                                Player.REPEAT_MODE_ALL -> R.drawable.repeat
-                                Player.REPEAT_MODE_ONE -> R.drawable.repeat_one
-                                else -> R.drawable.repeat
-                            },
-                        onClick = {
-                            playerConnection.player.toggleRepeatMode()
-                        },
-                        isActive = repeatMode != Player.REPEAT_MODE_OFF,
-                        enabled = !isListenTogetherGuest,
-                        shape = repeatShape,
+                        icon = R.drawable.queue_music,
+                        onClick = { state.expandSoft() },
+                        isActive = false,
+                        shape = pillShape,
                         modifier = Modifier.size(buttonSize),
                         textButtonColor = textButtonColor,
                         iconButtonColor = iconButtonColor,
