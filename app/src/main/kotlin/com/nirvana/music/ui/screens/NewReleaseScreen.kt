@@ -5,6 +5,7 @@
 
 package com.nirvana.music.ui.screens
 
+import com.nirvana.music.ui.component.glassTopAppBarColors
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.asPaddingValues
@@ -103,6 +104,7 @@ fun NewReleaseScreen(
     }
 
     TopAppBar(
+        colors = glassTopAppBarColors(),
         title = { Text(stringResource(R.string.new_release_albums)) },
         navigationIcon = {
             IconButton(
