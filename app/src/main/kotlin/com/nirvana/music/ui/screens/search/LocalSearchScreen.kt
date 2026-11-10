@@ -110,7 +110,7 @@ fun LocalSearchScreen(
         modifier =
             Modifier
                 .fillMaxSize()
-                .background(if (pureBlack) Color.Black else MaterialTheme.colorScheme.background)
+                .background(if (pureBlack) Color.Black else androidx.compose.ui.graphics.Color.Transparent)
                 .let { base ->
                     if (isLandscape) {
                         base.windowInsetsPadding(
