@@ -5,6 +5,7 @@
 
 package com.nirvana.music.ui.screens.settings
 
+import com.nirvana.music.ui.component.glassTopAppBarColors
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -189,6 +190,7 @@ fun RomanizationSettings(
     }
 
     TopAppBar(
+        colors = glassTopAppBarColors(),
         title = { Text(stringResource(R.string.lyrics_romanize_title)) },
         navigationIcon = {
             IconButton(
