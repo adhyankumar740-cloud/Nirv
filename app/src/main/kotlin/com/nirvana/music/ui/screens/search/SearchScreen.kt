@@ -277,7 +277,7 @@ fun SearchScreen(
                     ),
             )
         },
-        containerColor = if (pureBlack) Color.Black else MaterialTheme.colorScheme.background,
+        containerColor = if (pureBlack) Color.Black else androidx.compose.ui.graphics.Color.Transparent,
     ) { paddingValues ->
         Box(
             modifier =
