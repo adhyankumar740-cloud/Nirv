@@ -168,6 +168,7 @@ import com.nirvana.music.playback.MusicService
 import com.nirvana.music.playback.MusicService.MusicBinder
 import com.nirvana.music.playback.PlayerConnection
 import com.nirvana.music.playback.queues.YouTubeQueue
+import com.nirvana.music.ui.component.auroraBackground
 import com.nirvana.music.ui.component.AccountSettingsDialog
 import com.nirvana.music.ui.component.AppNavigationBar
 import com.nirvana.music.ui.component.AppNavigationRail
@@ -663,7 +664,17 @@ class MainActivity : ComponentActivity() {
                 modifier =
                     Modifier
                         .fillMaxSize()
-                        .background(if (pureBlack) Color.Black else MaterialTheme.colorScheme.surface),
+                        .then(
+                            if (pureBlack) {
+                                Modifier.background(Color.Black)
+                            } else {
+                                Modifier.auroraBackground(
+                                    base = MaterialTheme.colorScheme.background,
+                                    glowA = MaterialTheme.colorScheme.primary,
+                                    glowB = MaterialTheme.colorScheme.tertiary,
+                                )
+                            },
+                        ),
             ) {
                 val density = LocalDensity.current
                 val configuration = LocalWindowInfo.current
@@ -997,6 +1008,7 @@ class MainActivity : ComponentActivity() {
                     }
 
                     Scaffold(
+                        containerColor = Color.Transparent,
                         snackbarHost = { SnackbarHost(snackbarHostState) },
                         topBar = {
                             AnimatedVisibility(
@@ -1069,8 +1081,8 @@ class MainActivity : ComponentActivity() {
                                         scrollBehavior = topAppBarScrollBehavior,
                                         colors =
                                             TopAppBarDefaults.topAppBarColors(
-                                                containerColor = if (pureBlack) Color.Black else MaterialTheme.colorScheme.surfaceContainer,
-                                                scrolledContainerColor = if (pureBlack) Color.Black else MaterialTheme.colorScheme.surfaceContainer,
+                                                containerColor = if (pureBlack) Color.Black else Color.Transparent,
+                                                scrolledContainerColor = if (pureBlack) Color.Black else MaterialTheme.colorScheme.surfaceContainer.copy(alpha = 0.9f),
                                                 titleContentColor = MaterialTheme.colorScheme.onSurface,
                                                 actionIconContentColor = MaterialTheme.colorScheme.onSurfaceVariant,
                                                 navigationIconContentColor = MaterialTheme.colorScheme.onSurfaceVariant,
