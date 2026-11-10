@@ -77,13 +77,8 @@ fun Material3SettingsGroup(
                         .fillMaxWidth()
                         .animateContentSize(),
                     shape = shape,
-                    colors = CardDefaults.cardColors(
-                        containerColor = if (!useLowContrast) {
-                            MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f)
-                        } else {
-                            MaterialTheme.colorScheme.surfaceContainerLow
-                        }
-                    ),
+                    colors = glassCardColors(strong = useLowContrast),
+                    border = GlassBorder,
                     elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
                 ) {
                     Material3SettingsItemRow(item = item)
