@@ -5,6 +5,8 @@
 
 package com.nirvana.music.ui.screens.settings
 
+import com.nirvana.music.ui.component.glassSheetColor
+import com.nirvana.music.ui.component.glassTopAppBarColors
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -173,6 +175,7 @@ fun AiSettings(navController: NavController) {
 
     if (showProviderHelpDialog) {
         AlertDialog(
+        containerColor = glassSheetColor(),
             onDismissRequest = { showProviderHelpDialog = false },
             confirmButton = {
                 TextButton(onClick = { showProviderHelpDialog = false }) {
@@ -240,6 +243,7 @@ fun AiSettings(navController: NavController) {
 
     if (showTranslateModeHelpDialog) {
         AlertDialog(
+        containerColor = glassSheetColor(),
             onDismissRequest = { showTranslateModeHelpDialog = false },
             confirmButton = {
                 TextButton(onClick = { showTranslateModeHelpDialog = false }) {
@@ -650,6 +654,7 @@ fun AiSettings(navController: NavController) {
     }
 
     TopAppBar(
+        colors = glassTopAppBarColors(),
         title = { Text(stringResource(R.string.ai_lyrics_translation)) },
         navigationIcon = {
             IconButton(onClick = { navController.navigateUp() }) {
