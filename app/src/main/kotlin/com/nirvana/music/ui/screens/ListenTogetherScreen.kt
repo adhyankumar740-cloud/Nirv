@@ -5,6 +5,9 @@
 
 package com.nirvana.music.ui.screens
 
+import com.nirvana.music.ui.component.GlassBorder
+import com.nirvana.music.ui.component.glassCardColors
+import com.nirvana.music.ui.component.glassTopAppBarColors
 import android.content.Context
 import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
@@ -239,7 +242,7 @@ fun ListenTogetherScreen(
         modifier =
             Modifier
                 .fillMaxSize()
-                .background(MaterialTheme.colorScheme.background)
+                .background(androidx.compose.ui.graphics.Color.Transparent)
                 .imePadding(),
         contentPadding =
             PaddingValues(
@@ -418,6 +421,7 @@ fun ListenTogetherScreen(
 
     if (shouldShowTopBar) {
         TopAppBar(
+        colors = glassTopAppBarColors(),
             title = { Text(stringResource(R.string.together)) },
             navigationIcon = {
                 IconButton(
@@ -653,10 +657,8 @@ private fun RoomStatusCard(
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(24.dp),
-        colors =
-            CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
-            ),
+        colors = glassCardColors(strong = true),
+        border = GlassBorder,
     ) {
         Column(
             modifier =
@@ -755,10 +757,8 @@ private fun ConnectedUsersSection(
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
-        colors =
-            CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
-            ),
+        colors = glassCardColors(strong = true),
+        border = GlassBorder,
     ) {
         Column(
             modifier = Modifier.padding(16.dp),
@@ -901,10 +901,8 @@ private fun PendingJoinRequestsSection(
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
-        colors =
-            CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
-            ),
+        colors = glassCardColors(strong = true),
+        border = GlassBorder,
     ) {
         Column(
             modifier = Modifier.padding(16.dp),
@@ -980,10 +978,8 @@ private fun PendingSuggestionsSection(
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
-        colors =
-            CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
-            ),
+        colors = glassCardColors(strong = true),
+        border = GlassBorder,
     ) {
         Column(
             modifier = Modifier.padding(16.dp),
@@ -1067,10 +1063,8 @@ private fun JoinCreateRoomSection(
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(24.dp),
-        colors =
-            CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
-            ),
+        colors = glassCardColors(strong = true),
+        border = GlassBorder,
     ) {
         Column(
             modifier =
@@ -1283,10 +1277,8 @@ private fun SettingsLinkCard(onClick: () -> Unit) {
                 .fillMaxWidth()
                 .clickable(onClick = onClick),
         shape = RoundedCornerShape(16.dp),
-        colors =
-            CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
-            ),
+        colors = glassCardColors(strong = true),
+        border = GlassBorder,
     ) {
         Row(
             modifier = Modifier.padding(16.dp),
