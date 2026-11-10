@@ -12,6 +12,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.NavigationRail
 import androidx.compose.material3.NavigationRailItem
 import androidx.compose.material3.Text
@@ -23,6 +24,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
@@ -148,9 +152,21 @@ fun AppNavigationBar(
     val haptics = LocalHapticFeedback.current
     val viewConfiguration = LocalViewConfiguration.current
 
+    val glassShape = RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp)
+    val glassModifier = if (pureBlack) modifier else modifier
+        .clip(glassShape)
+        .glass(shape = glassShape, strong = true)
+    val itemColors = NavigationBarItemDefaults.colors(
+        selectedIconColor = MaterialTheme.colorScheme.primary,
+        selectedTextColor = MaterialTheme.colorScheme.onSurface,
+        indicatorColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.18f),
+        unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
+        unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
+    )
+
     NavigationBar(
-        modifier = modifier,
-        containerColor = containerColor,
+        modifier = glassModifier,
+        containerColor = if (pureBlack) containerColor else containerColor.copy(alpha = 0.92f),
         contentColor = contentColor
     ) {
         navigationItems.forEach { screen ->
@@ -200,6 +216,7 @@ fun AppNavigationBar(
                     // For search item, click is handled via InteractionSource
                 },
                 interactionSource = interactionSource,
+                colors = itemColors,
                 icon = {
                     Icon(
                         painter = painterResource(id = iconRes),
