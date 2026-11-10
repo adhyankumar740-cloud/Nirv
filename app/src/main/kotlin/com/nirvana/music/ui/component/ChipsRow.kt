@@ -6,6 +6,7 @@
 package com.nirvana.music.ui.component
 
 import android.annotation.SuppressLint
+import com.nirvana.music.ui.theme.GlassFill
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
@@ -61,7 +62,7 @@ fun <E> ChipsRow(
     currentValue: E,
     onValueUpdate: (E) -> Unit,
     modifier: Modifier = Modifier,
-    containerColor: Color = MaterialTheme.colorScheme.surfaceContainer,
+    containerColor: Color = GlassFill,
 ) {
     Row(
         modifier =
@@ -90,7 +91,7 @@ fun <E> ChipsRow(
                 ),
                 onClick = { onValueUpdate(value) },
                 shape = RoundedCornerShape(20.dp),
-                border = null
+                border = if (isSelected) null else GlassBorder
             )
 
             Spacer(Modifier.width(8.dp))
@@ -108,7 +109,7 @@ fun <Int> ChoiceChipsRow(
     currentValue: Int,
     onValueUpdate: (Int) -> Unit,
     modifier: Modifier = Modifier,
-    containerColor: Color = MaterialTheme.colorScheme.surfaceContainer,
+    containerColor: Color = GlassFill,
 ) {
     var expandIconDegree by remember { mutableFloatStateOf(0f) }
     val rotationAnimation by animateFloatAsState(
@@ -151,7 +152,7 @@ fun <Int> ChoiceChipsRow(
                     )
                 },
                 shape = RoundedCornerShape(16.dp),
-                border = null,
+                border = GlassBorder,
                 colors = AssistChipDefaults.assistChipColors(
                     containerColor = containerColor,
                     labelColor = MaterialTheme.colorScheme.onSurface
@@ -208,7 +209,7 @@ fun <Int> ChoiceChipsRow(
                         ),
                         onClick = { onValueUpdate(value) },
                         shape = RoundedCornerShape(16.dp),
-                        border = null
+                        border = GlassBorder
                     )
                 }
             }
