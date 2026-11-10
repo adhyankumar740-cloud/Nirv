@@ -5,6 +5,7 @@
 
 package com.nirvana.music.ui.screens.settings.integrations
 
+import com.nirvana.music.ui.component.glassTopAppBarColors
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -614,6 +615,7 @@ fun LastFMSettings(
     }
 
     TopAppBar(
+        colors = glassTopAppBarColors(),
         title = { Text(stringResource(R.string.lastfm_integration)) },
         navigationIcon = {
             IconButton(
