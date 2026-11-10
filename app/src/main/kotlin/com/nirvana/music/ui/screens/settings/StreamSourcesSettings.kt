@@ -5,6 +5,7 @@
 
 package com.nirvana.music.ui.screens.settings
 
+import com.nirvana.music.ui.component.glassTopAppBarColors
 import androidx.annotation.StringRes
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -146,6 +147,7 @@ fun StreamSourcesSettings(
     }
 
     TopAppBar(
+        colors = glassTopAppBarColors(),
         title = { Text(stringResource(R.string.stream_sources)) },
         navigationIcon = {
             IconButton(
