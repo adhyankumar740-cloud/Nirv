@@ -5,6 +5,7 @@
 
 package com.nirvana.music.ui.screens
 
+import com.nirvana.music.ui.component.glassTopAppBarColors
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.asPaddingValues
@@ -145,6 +146,7 @@ fun BrowseScreen(
     }
 
     TopAppBar(
+        colors = glassTopAppBarColors(),
         title = { Text(title ?: "") },
         navigationIcon = {
             IconButton(
