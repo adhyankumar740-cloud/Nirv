@@ -5,6 +5,7 @@
 
 package com.nirvana.music.ui.screens.artist
 
+import com.nirvana.music.ui.component.glassTopAppBarColors
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
@@ -375,6 +376,7 @@ fun ArtistItemsScreen(
     }
 
     TopAppBar(
+        colors = glassTopAppBarColors(),
         title = { Text(title) },
         navigationIcon = {
             IconButton(
